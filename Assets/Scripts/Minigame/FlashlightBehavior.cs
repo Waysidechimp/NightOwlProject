@@ -8,14 +8,14 @@ public class FlashlightBehavior : MonoBehaviour
     [SerializeField] Canvas parentCanvas;
     MinigameBehavior minigameBehavior;
 
-    Vector2 pos;
+    Vector2 mousePos;
     float maxTimer = 5f;
-    [SerializeField]
     float timer = 5f;
     // Start is called before the first frame update
     void Start()
     {
         minigameBehavior = FindObjectOfType<MinigameBehavior>();
+        maxTimer = minigameBehavior.GetFlashlightTimer();
     }
 
     // Update is called once per frame
@@ -26,10 +26,10 @@ public class FlashlightBehavior : MonoBehaviour
 
     void TrackMouse()
     {
-        if (minigameBehavior.minigameStart)
+        if (minigameBehavior.bedGameStart)
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out pos);
-            transform.position = parentCanvas.transform.TransformPoint(pos);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(parentCanvas.transform as RectTransform, Input.mousePosition, parentCanvas.worldCamera, out mousePos);
+            transform.position = parentCanvas.transform.TransformPoint(mousePos);
         }
     }
 
@@ -44,10 +44,9 @@ public class FlashlightBehavior : MonoBehaviour
             else
             {
                 timer = maxTimer;
-                Debug.Log("Monster Slain");
                 monsterManager.BanishMonster();
-                minigameBehavior.UpdateMinigameState(false);
-                minigameBehavior.gameObject.GetComponent<PlayerMovement>().ReactivateMovement();
+                gameObject.transform.position = transform.parent.position;
+                minigameBehavior.UpdateBedGameState(false);
             }
         }
     }

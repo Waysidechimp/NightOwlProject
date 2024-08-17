@@ -13,9 +13,11 @@ public class PlayerMovement : MonoBehaviour
     PlayerInput input;
     Rigidbody2D rb2d;
     Vector2 movementVector;
+
+    minigameType currentMinigameInRange = minigameType.None;
     private void Awake()
     {
-        minigameBehavior = GetComponent<MinigameBehavior>();
+        minigameBehavior = GameObject.Find("MinigameManager").GetComponent<MinigameBehavior>();
         rb2d = GetComponent<Rigidbody2D>();
         input = GetComponent<PlayerInput>();
     }
@@ -45,7 +47,20 @@ public class PlayerMovement : MonoBehaviour
 
     void OnInteract(InputValue value)
     {
-        minigameBehavior.UpdateMinigameState(true);
+        switch (currentMinigameInRange)
+        {
+            case minigameType.Bed:
+                minigameBehavior.UpdateBedGameState(true);
+                break;
+            case minigameType.Window:
+                minigameBehavior.UpdateWindowGameState(true);
+                break;
+            case minigameType.Homework:
+                minigameBehavior.UpdateHomeworkGameState(true);
+                break;
+            default:
+                break;
+        }
         isInteracting = true;
         input.currentActionMap.Disable();
     }
@@ -53,5 +68,10 @@ public class PlayerMovement : MonoBehaviour
     public void ReactivateMovement()
     {
         input.currentActionMap.Enable();
+    }
+
+    public void GetMinigameType(minigameType minigameType)
+    {
+        currentMinigameInRange = minigameType;
     }
 }

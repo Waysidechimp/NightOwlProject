@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-
-    [SerializeField] GameObject minigamePrefab;
+    [SerializeField] minigameType minigameType;
 
     PlayerMovement player;
     // Start is called before the first frame update
@@ -27,6 +26,7 @@ public class Interactable : MonoBehaviour
         {
             Debug.Log("Player is in range");
             player = collision.gameObject.GetComponent<PlayerMovement>();
+            player.GetMinigameType(minigameType);
         }
     }
 
@@ -44,6 +44,7 @@ public class Interactable : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Player is out of range");
+            player.GetMinigameType(minigameType.None);
             player = null;
         }
     }
