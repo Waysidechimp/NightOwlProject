@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class FlashlightBehavior : MonoBehaviour
 {
+    [SerializeField] MonsterManager monsterManager;
     [SerializeField] Canvas parentCanvas;
     MinigameBehavior minigameBehavior;
 
     Vector2 pos;
     float maxTimer = 5f;
+    [SerializeField]
     float timer = 5f;
     // Start is called before the first frame update
     void Start()
@@ -43,6 +45,7 @@ public class FlashlightBehavior : MonoBehaviour
             {
                 timer = maxTimer;
                 Debug.Log("Monster Slain");
+                monsterManager.BanishMonster();
                 minigameBehavior.UpdateMinigameState(false);
                 minigameBehavior.gameObject.GetComponent<PlayerMovement>().ReactivateMovement();
             }
