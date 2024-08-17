@@ -36,7 +36,7 @@ public class Interactable : MonoBehaviour
         {
             Debug.Log("PLayer is interacting");
         }
-        //player.isInteracting = false;
+        player.isInteracting = false;
     }
 
     private void OnTriggerExit2D(Collider2D collision)

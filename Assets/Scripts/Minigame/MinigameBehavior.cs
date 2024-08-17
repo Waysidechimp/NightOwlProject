@@ -8,7 +8,7 @@ public class MinigameBehavior : MonoBehaviour
     [SerializeField] Animator minigameAnimator;
 
     PlayerMovement player;
-
+    public bool minigameStart = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,13 +18,11 @@ public class MinigameBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.isInteracting == true)
-        {
-            minigameAnimator.SetBool("StartPopup", true);
-        }
-        else
-        {
-            minigameAnimator.SetBool("StartPopup", false);
-        }
+        minigameAnimator.SetBool("StartPopup", minigameStart);
+    }
+
+    public void UpdateMinigameState(bool newState)
+    {
+        minigameStart = newState;
     }
 }
