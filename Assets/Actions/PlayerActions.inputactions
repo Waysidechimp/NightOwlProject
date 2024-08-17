@@ -10,9 +10,18 @@
                     "type": "Value",
                     "id": "e61200ca-84e9-4ff5-be17-47d338015f4b",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "NormalizeVector2",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "24ac97f2-a9ee-4723-a83d-40df7e7d4edb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -70,6 +79,45 @@
                     "action": "Walking",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "9a266ed4-0844-4aa8-98dd-81410e6c7603",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Minigame",
+            "id": "2f0bf5b2-36fc-4a19-91b9-10299a94b216",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "573b2604-fd2e-4b92-a774-2ed98f6c4162",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b66aa950-1b61-499c-ad37-687c50c7986b",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -7,14 +7,15 @@ using static UnityEngine.UI.ScrollRect;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float walkSpeed = 5f;
-    Rigidbody2D rb2d;
+    [SerializeField] public bool isInteracting;
 
+    PlayerInput input;
+    Rigidbody2D rb2d;
     Vector2 movementVector;
-    Vector2 sideMoveVector;
-    Vector2 vertMoveVector;
     private void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        input = GetComponent<PlayerInput>();
     }
 
     // Start is called before the first frame update
@@ -38,5 +39,11 @@ public class PlayerMovement : MonoBehaviour
     {
         movementVector = value.Get<Vector2>();
         movementVector *= walkSpeed;
+    }
+
+    void OnInteract(InputValue value)
+    {
+        isInteracting = true;
+        input.currentActionMap.Disable();
     }
 }
