@@ -16,6 +16,7 @@ public class MonsterManager : MonoBehaviour
     [Header("Minigame Assets")]
     [SerializeField] GameObject bedCollision;
     [SerializeField] GameObject windowCollision;
+    [SerializeField] MinigameBehavior minigameBehavior;
 
     [Header("Monster Manager Assets")]
     [FormerlySerializedAs("Solidmap")] [FormerlySerializedAs("map")] [SerializeField]
@@ -125,7 +126,11 @@ public class MonsterManager : MonoBehaviour
                 break;
             case 3 : solidmap.SetTile(bedmonsterPosition1, finalStage1);
                 solidmap.SetTile(bedmonsterPosition2, finalStage2);
+                bedMonsterAnger++;
                 bedCollision.SetActive(true);
+                break;
+            case 4 : 
+                minigameBehavior.EndGame();
                 break;
             default:
                 Debug.Log("Error");
@@ -160,7 +165,11 @@ public class MonsterManager : MonoBehaviour
                 break;
             case 3 : wallmap.SetTile(windowMonsterPosition1, windowFinalStage1);
                 softmap.SetTile(windowMonsterPosition2, windowFinalStage2);
+                windowMonsterAnger++;
                 windowCollision.SetActive(true);
+                break;
+            case 4 : 
+                minigameBehavior.EndGame();
                 break;
             default:
                 Debug.Log("Error");
