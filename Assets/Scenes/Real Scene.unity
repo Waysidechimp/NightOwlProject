@@ -2046,7 +2046,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.11913514, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2057,7 +2057,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.36, y: 3.98}
+  m_Size: {x: 3.1217294, y: 3.98}
   m_EdgeRadius: 0
 --- !u!1 &270275477
 GameObject:
@@ -4078,7 +4078,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1496396, y: -0.18203843}
+  m_Offset: {x: 0.014171481, y: -0.18203843}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4089,7 +4089,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5452108, y: 2.5940769}
+  m_Size: {x: 2.872833, y: 2.5940769}
   m_EdgeRadius: 0
 --- !u!114 &585609924
 MonoBehaviour:
@@ -20805,7 +20805,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1766484227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21220,7 +21220,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.33, y: -0.82, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -21791,8 +21791,8 @@ MonoBehaviour:
   finalStage2: {fileID: 11400000, guid: b5eaa9893b7622d43907bad94175932a, type: 2}
   bedmonsterPosition1: {x: -9, y: 1, z: 0}
   bedmonsterPosition2: {x: -8, y: 1, z: 0}
-  angerInterval: 5
-  bedMonsterAngerTimer: 5
+  angerInterval: 20
+  bedMonsterAngerTimer: 20
   bedMonsterAnger: 1
   windowFirstStage1: {fileID: 11400000, guid: 3bbb3b66cc4e6e908b37ea2a0ef55c0b, type: 2}
   windowFirstStage2: {fileID: 0}
@@ -21802,8 +21802,8 @@ MonoBehaviour:
   windowFinalStage2: {fileID: 11400000, guid: 7022bf39b502b867a868012ca6e4281d, type: 2}
   windowMonsterPosition1: {x: -5, y: 4, z: 0}
   windowMonsterPosition2: {x: -5, y: 3, z: 0}
-  windowMonsterAngerTimer: 5
-  windowAngerInterval: 5
+  windowMonsterAngerTimer: 15
+  windowAngerInterval: 15
   windowMonsterAnger: 1
 --- !u!4 &1876535226
 Transform:
