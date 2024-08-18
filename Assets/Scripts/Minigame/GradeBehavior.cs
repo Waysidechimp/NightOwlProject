@@ -48,7 +48,7 @@ public class GradeBehavior : MonoBehaviour
         }
     }
 
-    void ReturnToMainMenu()
+    public void ReturnToMainMenu()
     {
         SceneManager.LoadScene(1);
     }

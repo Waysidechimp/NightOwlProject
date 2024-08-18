@@ -45,7 +45,7 @@ public class FlashlightBehavior : MonoBehaviour
             {
                 timer = maxTimer;
                 monsterManager.BanishMonster();
-                gameObject.transform.position = transform.parent.position;
+                gameObject.transform.position = new Vector2(-578, 301);
                 minigameBehavior.UpdateBedGameState(false);
             }
         }
