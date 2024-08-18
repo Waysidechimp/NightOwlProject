@@ -12,6 +12,8 @@ public class MonsterManager : MonoBehaviour
     private Tilemap solidmap;
     [SerializeField]
     private Tilemap softmap;
+    [SerializeField]
+    private Tilemap wallmap;
     
     // Bed Monster stages
     [FormerlySerializedAs("firstStage")] [SerializeField]
@@ -68,21 +70,24 @@ public class MonsterManager : MonoBehaviour
     private byte windowMonsterAnger = 1;
     
     //update tiles
-    
+
     internal void Update()
     {
         bedMonsterAngerTimer -= Time.deltaTime;
         windowMonsterAngerTimer -= Time.deltaTime;
+
         if (bedMonsterAngerTimer <= 0)
         {
             BedIncreaseAngerStage();
             bedMonsterAngerTimer = angerInterval;
         }
 
-        if (!(windowMonsterAngerTimer <= 0)) return;
+        if (windowMonsterAngerTimer <= 0)
+        {
         WindowIncreaseAngerStage();
         windowMonsterAngerTimer = windowAngerInterval;
-    }
+        }
+}
 
     private void BedIncreaseAngerStage()
     {
@@ -114,20 +119,21 @@ public class MonsterManager : MonoBehaviour
     {
         switch (windowMonsterAnger)
         {
-            case 0 : solidmap.SetTile(windowMonsterPosition1, windowFirstStage1);
+            case 0 : wallmap.SetTile(windowMonsterPosition1, windowFirstStage1);
                 softmap.SetTile(windowMonsterPosition2, windowFirstStage2);
-                bedMonsterAnger++;
+                windowMonsterAnger++;
+                Debug.Log("Window increased");
                 break;
-            case 1 : solidmap.SetTile(windowMonsterPosition1, windowFirstStage1);
+            case 1 : wallmap.SetTile(windowMonsterPosition1, windowFirstStage1);
                 softmap.SetTile(windowMonsterPosition2, windowFirstStage2);
-                bedMonsterAnger++;
+                windowMonsterAnger++;
                 break;
-            case 2 : solidmap.SetTile(windowMonsterPosition1, secondStage1);
-                softmap.SetTile(windowMonsterPosition2, secondStage2);
-                bedMonsterAnger++;
+            case 2 : wallmap.SetTile(windowMonsterPosition1, windowSecondStage1);
+                softmap.SetTile(windowMonsterPosition2, windowSecondStage2);
+                windowMonsterAnger++;
                 break;
-            case 3 : solidmap.SetTile(windowMonsterPosition1, finalStage1);
-                softmap.SetTile(windowMonsterPosition2, finalStage2);
+            case 3 : wallmap.SetTile(windowMonsterPosition1, windowFinalStage1);
+                softmap.SetTile(windowMonsterPosition2, windowFinalStage2);
                 break;
             default:
                 Debug.Log("Error");
