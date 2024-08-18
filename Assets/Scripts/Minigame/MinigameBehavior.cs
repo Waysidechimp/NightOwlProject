@@ -147,8 +147,8 @@ public class MinigameBehavior : MonoBehaviour
         UpdateGradeState(true);
         gameSource.clip = endGameSound;
         gameSource.Play();
-        gameSource.clip = gameMusic;
-        gameSource.Play();
+        /*gameSource.clip = gameMusic;
+        gameSource.Play();*/
     }
 }
 public enum minigameType

@@ -16897,7 +16897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxGameTimer: 300
   gameTimer: 0
-  endGameSound: {fileID: 0}
+  endGameSound: {fileID: 8300000, guid: ebcc1582c5cec6c46935ace9e182bb01, type: 3}
   gameMusic: {fileID: 8300000, guid: f1e6ac21724e556499b2cfc6e508ae4c, type: 3}
   bedGameAnimator: {fileID: 2094465534}
   bedGame: {fileID: 2094465530}

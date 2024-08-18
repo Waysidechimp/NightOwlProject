@@ -123,11 +123,13 @@ public class MonsterManager : MonoBehaviour
                 solidmap.SetTile(bedmonsterPosition2, secondStage2);
                 bedMonsterAnger++;
                 bedCollision.SetActive(true);
+                soundSource.Play();
                 break;
             case 3 : solidmap.SetTile(bedmonsterPosition1, finalStage1);
                 solidmap.SetTile(bedmonsterPosition2, finalStage2);
                 bedMonsterAnger++;
                 bedCollision.SetActive(true);
+                soundSource.Play();
                 break;
             case 4 : 
                 minigameBehavior.EndGame();
@@ -142,7 +144,7 @@ public class MonsterManager : MonoBehaviour
         {
 
         }
-        soundSource.Play();
+        
     }
     private void WindowIncreaseAngerStage()
     {
@@ -162,11 +164,13 @@ public class MonsterManager : MonoBehaviour
                 softmap.SetTile(windowMonsterPosition2, windowSecondStage2);
                 windowMonsterAnger++;
                 windowCollision.SetActive(true);
+                soundSource.Play();
                 break;
             case 3 : wallmap.SetTile(windowMonsterPosition1, windowFinalStage1);
                 softmap.SetTile(windowMonsterPosition2, windowFinalStage2);
                 windowMonsterAnger++;
                 windowCollision.SetActive(true);
+                soundSource.Play();
                 break;
             case 4 : 
                 minigameBehavior.EndGame();
@@ -177,7 +181,6 @@ public class MonsterManager : MonoBehaviour
                 throw new ArgumentException("Invalid anger stage");
             
         }
-        soundSource.Play();
     }
 
     public void BanishMonster()
