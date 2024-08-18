@@ -8,6 +8,16 @@ using UnityEngine.Tilemaps;
 
 public class MonsterManager : MonoBehaviour
 {
+    [Header("Audio Assets")]
+    [SerializeField] AudioClip bedSound;
+    [SerializeField] AudioClip windowSound;
+    AudioSource soundSource;
+
+    [Header("Minigame Assets")]
+    [SerializeField] GameObject bedCollision;
+    [SerializeField] GameObject windowCollision;
+
+    [Header("Monster Manager Assets")]
     [FormerlySerializedAs("Solidmap")] [FormerlySerializedAs("map")] [SerializeField]
     private Tilemap solidmap;
     [SerializeField]
@@ -68,8 +78,14 @@ public class MonsterManager : MonoBehaviour
 
     [SerializeField]
     private byte windowMonsterAnger = 1;
-    
+
     //update tiles
+    private void Awake()
+    {
+        soundSource = GetComponent<AudioSource>();
+        bedCollision.SetActive(false);
+        windowCollision.SetActive(false);
+    }
 
     internal void Update()
     {
@@ -91,6 +107,7 @@ public class MonsterManager : MonoBehaviour
 
     private void BedIncreaseAngerStage()
     {
+        soundSource.clip = bedSound;
         switch (bedMonsterAnger)
         {
             case 0 : solidmap.SetTile(bedmonsterPosition1, firstStage1);
@@ -104,9 +121,11 @@ public class MonsterManager : MonoBehaviour
             case 2 : solidmap.SetTile(bedmonsterPosition1, secondStage1);
                 solidmap.SetTile(bedmonsterPosition2, secondStage2);
                 bedMonsterAnger++;
+                bedCollision.SetActive(true);
                 break;
             case 3 : solidmap.SetTile(bedmonsterPosition1, finalStage1);
                 solidmap.SetTile(bedmonsterPosition2, finalStage2);
+                bedCollision.SetActive(true);
                 break;
             default:
                 Debug.Log("Error");
@@ -114,9 +133,15 @@ public class MonsterManager : MonoBehaviour
                 throw new ArgumentException("Invalid anger stage");
             
         }
+        if(bedMonsterAnger >= 2)
+        {
+
+        }
+        soundSource.Play();
     }
     private void WindowIncreaseAngerStage()
     {
+        soundSource.clip = windowSound;
         switch (windowMonsterAnger)
         {
             case 0 : wallmap.SetTile(windowMonsterPosition1, windowFirstStage1);
@@ -131,9 +156,11 @@ public class MonsterManager : MonoBehaviour
             case 2 : wallmap.SetTile(windowMonsterPosition1, windowSecondStage1);
                 softmap.SetTile(windowMonsterPosition2, windowSecondStage2);
                 windowMonsterAnger++;
+                windowCollision.SetActive(true);
                 break;
             case 3 : wallmap.SetTile(windowMonsterPosition1, windowFinalStage1);
                 softmap.SetTile(windowMonsterPosition2, windowFinalStage2);
+                windowCollision.SetActive(true);
                 break;
             default:
                 Debug.Log("Error");
@@ -141,6 +168,7 @@ public class MonsterManager : MonoBehaviour
                 throw new ArgumentException("Invalid anger stage");
             
         }
+        soundSource.Play();
     }
 
     public void BanishMonster()
