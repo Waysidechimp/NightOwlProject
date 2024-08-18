@@ -25,18 +25,21 @@ public class HomeworkBehavior : MonoBehaviour
     public void SubmitQuestions()
     {
         float currentGrade = 0;
+
+        int actualIndex = 0;
         foreach (var question in playerAnswers)
         {
-            foreach (string answer in actualAnswers)
+            if (question.text == actualAnswers[actualIndex])
             {
-                if (question.text == answer)
-                {
-                    currentGrade += 7.14f;
-                }
+                currentGrade += 7.14f;
             }
+            actualIndex++;
         }
+        Debug.Log(currentGrade);
         grade = (int)currentGrade;
         miniGameBehavior.UpdateGrade(grade);
+        miniGameBehavior.UpdateHomeworkGameState(false);
+        miniGameBehavior.UpdateGradeState(true);
     }
 
     public void ExitQuestions()

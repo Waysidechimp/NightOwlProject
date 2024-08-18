@@ -6,13 +6,17 @@ using UnityEngine.InputSystem.LowLevel;
 
 public class MinigameBehavior : MonoBehaviour
 {
+    [Header("OverallGameVariables")]
+    [SerializeField] float maxGameTimer;
+    [SerializeField] float gameTimer;
+
     [Header("Bed Minigame Components")]
     [SerializeField] Animator bedGameAnimator;
     [SerializeField] GameObject bedGame;
 
     [Header("Bed Minigame Variables")]
     public bool bedGameStart = false;
-    float flashlightTimer = 5f;
+    [SerializeField] float flashlightTimer = 5f;
 
     [Header("Window Minigame Components")]
     [SerializeField] Animator windowGameAnimator;
@@ -24,7 +28,16 @@ public class MinigameBehavior : MonoBehaviour
     [Header("Homework Minigame Components")]
     [SerializeField] Animator homeworkGameAnimator;
     [SerializeField] GameObject homeworkGame;
+
+    [Header("Homeowork Minigame Variables")]
     public bool homeworkGameStart = false;
+
+    [Header("Grade Components")]
+    [SerializeField] Animator gradeAnimator;
+    [SerializeField] GameObject gradeObject;
+
+    [Header("Homeowork Minigame Variables")]
+    public bool gradeStart = false;
     int grade;
 
     PlayerMovement player;
@@ -35,13 +48,17 @@ public class MinigameBehavior : MonoBehaviour
         bedGame.SetActive(false);
         windowGame.SetActive(false);
         homeworkGame.SetActive(false);
+        gradeObject.SetActive(false);
+        gameTimer = maxGameTimer;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        RunTimer();
     }
+
+    #region Minigame Methods
 
     public void UpdateBedGameState(bool newState)
     {
@@ -84,6 +101,37 @@ public class MinigameBehavior : MonoBehaviour
     public void UpdateGrade(int playerGrade)
     {
         grade = playerGrade;
+    }
+
+    public void UpdateGradeState(bool newState)
+    {
+        gradeStart = newState;
+        gradeObject.SetActive(newState);
+        gradeAnimator.SetBool("StartPopup", gradeStart);
+    }
+
+    public int GetGrade()
+    {
+        return grade;
+    }
+
+    #endregion
+
+    void RunTimer()
+    {
+        if (gameTimer > 0)
+        {
+            gameTimer -= Time.deltaTime;
+        }
+        else
+        {
+            gameTimer = maxGameTimer;
+            UpdateBedGameState(false);
+            UpdateWindowGameState(false);
+            UpdateHomeworkGameState(false);
+            UpdateGrade(0);
+            UpdateGradeState(true);
+        }
     }
 }
 public enum minigameType
