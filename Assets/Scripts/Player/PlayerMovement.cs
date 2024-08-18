@@ -54,22 +54,20 @@ public class PlayerMovement : MonoBehaviour
         {
             case minigameType.Bed:
                 minigameBehavior.UpdateBedGameState(true);
-                isInteracting = true;
                 input.currentActionMap.Disable();
                 break;
             case minigameType.Window:
                 minigameBehavior.UpdateWindowGameState(true);
-                isInteracting = true;
                 input.currentActionMap.Disable();
                 break;
             case minigameType.Homework:
                 minigameBehavior.UpdateHomeworkGameState(true);
-                isInteracting = true;
                 input.currentActionMap.Disable();
                 break;
             default:
                 break;
         }
+        isInteracting = true;
     }
 
     public void ReactivateMovement()
