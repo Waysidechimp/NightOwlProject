@@ -14409,6 +14409,7 @@ MonoBehaviour:
   windowSound: {fileID: 8300000, guid: 939e3cbff03d0874d9717966b7398a96, type: 3}
   bedCollision: {fileID: 268241036}
   windowCollision: {fileID: 585609922}
+  minigameBehavior: {fileID: 1304083454}
   solidmap: {fileID: 283599301}
   softmap: {fileID: 1427003503}
   wallmap: {fileID: 1257236893}
