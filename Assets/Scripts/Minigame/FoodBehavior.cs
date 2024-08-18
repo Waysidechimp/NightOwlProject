@@ -7,6 +7,8 @@ public class FoodBehavior : MonoBehaviour
 {
     [SerializeField] Canvas parentCanvas;
     MinigameBehavior minigameBehavior;
+    [SerializeField] 
+    MonsterManager monsterManager;
 
     BoxCollider2D thisCollider;
     Vector2 mousePos;
@@ -43,6 +45,7 @@ public class FoodBehavior : MonoBehaviour
         if (collision.gameObject.name == "WindowMonsterHand")
         {
             Debug.Log("Monster Fed");
+            monsterManager.windowBanishMonster();
             gameObject.transform.position = transform.parent.position;
             minigameBehavior.UpdateWindowGameState(false);
         }

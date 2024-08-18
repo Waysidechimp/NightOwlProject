@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentCanvas: {fileID: 1604941251}
+  monsterManager: {fileID: 1876535225}
 --- !u!50 &21540091
 Rigidbody2D:
   serializedVersion: 4

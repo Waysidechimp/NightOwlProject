@@ -190,4 +190,12 @@ public class MonsterManager : MonoBehaviour
         solidmap.SetTile(bedmonsterPosition2, firstStage2);
         Debug.Log("Banish monster");
     }
+
+    public void windowBanishMonster()
+    {
+        windowMonsterAnger = 0;
+        wallmap.SetTile(windowMonsterPosition1, windowFirstStage1);
+        softmap.SetTile(windowMonsterPosition2, windowFirstStage2);
+        Debug.Log("windowBanish monster");
+    }
 }
