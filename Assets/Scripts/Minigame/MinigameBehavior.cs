@@ -9,6 +9,9 @@ public class MinigameBehavior : MonoBehaviour
     [Header("OverallGameVariables")]
     [SerializeField] float maxGameTimer;
     [SerializeField] float gameTimer;
+    [SerializeField] AudioClip endGameSound;
+    [SerializeField] AudioClip gameMusic;
+    AudioSource gameSource;
 
     [Header("Bed Minigame Components")]
     [SerializeField] Animator bedGameAnimator;
@@ -44,6 +47,7 @@ public class MinigameBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameSource = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         bedGame.SetActive(false);
         windowGame.SetActive(false);
@@ -141,6 +145,10 @@ public class MinigameBehavior : MonoBehaviour
         UpdateHomeworkGameState(false);
         UpdateGrade(0);
         UpdateGradeState(true);
+        gameSource.clip = endGameSound;
+        gameSource.Play();
+        gameSource.clip = gameMusic;
+        gameSource.Play();
     }
 }
 public enum minigameType
