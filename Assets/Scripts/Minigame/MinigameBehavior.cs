@@ -39,16 +39,15 @@ public class MinigameBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bedGameAnimator.SetBool("StartPopup", bedGameStart);
-        windowGameAnimator.SetBool("StartPopup", windowGameStart);
-        homeworkGameAnimator.SetBool("StartPopup", homeworkGameStart);
+
     }
 
     public void UpdateBedGameState(bool newState)
     {
         bedGameStart = newState;
         bedGame.SetActive(newState);
-        if(newState == false)
+        bedGameAnimator.SetBool("StartPopup", bedGameStart);
+        if ( newState == false )
         {
             player.ReactivateMovement();
         }
@@ -63,12 +62,18 @@ public class MinigameBehavior : MonoBehaviour
     {
         windowGameStart = newState;
         windowGame.SetActive(newState);
+        windowGameAnimator.SetBool("StartPopup", windowGameStart);
+        if ( newState == false)
+        {
+            player.ReactivateMovement();
+        }
     }
 
     public void UpdateHomeworkGameState(bool newState)
     {
         homeworkGameStart = newState;
         homeworkGame.SetActive(newState);
+        homeworkGameAnimator.SetBool("StartPopup", homeworkGameStart);
     }
 }
 public enum minigameType
