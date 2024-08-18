@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     PlayerInput input;
     Rigidbody2D rb2d;
     Vector2 movementVector;
+    [SerializeField]
+    Animator animator;
 
     minigameType currentMinigameInRange = minigameType.None;
     private void Awake()
@@ -38,11 +40,12 @@ public class PlayerMovement : MonoBehaviour
     {
         rb2d.velocity = movementVector;
     }
-
     void OnWalking(InputValue value)
     {
         movementVector = value.Get<Vector2>();
         movementVector *= walkSpeed;
+        animator.SetFloat("y-axisVelocity", movementVector.y);
+        animator.SetFloat("x-axisVelocity", movementVector.x);
     }
 
     void OnInteract(InputValue value)
