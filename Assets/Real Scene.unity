@@ -3399,8 +3399,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterManager: {fileID: 1876535225}
   parentCanvas: {fileID: 1604941251}
-  mousePos: {x: 0, y: 0}
-  timer: 5
 --- !u!50 &465981721
 Rigidbody2D:
   serializedVersion: 4
@@ -23069,7 +23067,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2094465531
 RectTransform:
   m_ObjectHideFlags: 0
