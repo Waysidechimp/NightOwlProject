@@ -25,6 +25,7 @@ public class MinigameBehavior : MonoBehaviour
     [SerializeField] Animator homeworkGameAnimator;
     [SerializeField] GameObject homeworkGame;
     public bool homeworkGameStart = false;
+    int grade;
 
     PlayerMovement player;
     // Start is called before the first frame update
@@ -74,6 +75,15 @@ public class MinigameBehavior : MonoBehaviour
         homeworkGameStart = newState;
         homeworkGame.SetActive(newState);
         homeworkGameAnimator.SetBool("StartPopup", homeworkGameStart);
+        if (newState == false)
+        {
+            player.ReactivateMovement();
+        }
+    }
+
+    public void UpdateGrade(int playerGrade)
+    {
+        grade = playerGrade;
     }
 }
 public enum minigameType
