@@ -133,6 +133,15 @@ public class MinigameBehavior : MonoBehaviour
             UpdateGradeState(true);
         }
     }
+
+    public void EndGame()
+    {
+        UpdateBedGameState(false);
+        UpdateWindowGameState(false);
+        UpdateHomeworkGameState(false);
+        UpdateGrade(0);
+        UpdateGradeState(true);
+    }
 }
 public enum minigameType
 {
